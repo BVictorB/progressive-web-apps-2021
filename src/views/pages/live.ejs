@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head'); %>
+
+  <%- include('../partials/header'); %>
+
+    <body>
+      <% if (symbol) { %>
+        <p>Symbol: <%= symbol %></p>
+        <p id="live-symbol">Loading live data, this might take a second...</p>
+      <% } %>
+      <script>
+        const symbol = <%- JSON.stringify(symbol) %>
+      </script>
+      <script src="/scripts/socket.js"></script>
+    </body>
+
+    <%- include('../partials/footer'); %>
+
+</html>

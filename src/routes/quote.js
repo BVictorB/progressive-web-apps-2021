@@ -1,6 +1,6 @@
 const
   fetch = require('node-fetch'),
-  token = 'c13nl2f48v6qin45q3pg'
+  token = 'c15j4kv48v6tvr5klm7g'
 
 const getQuote = (symbol) => {
   return fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol.toUpperCase()}&token=${token}`)
