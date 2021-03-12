@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head'); %>
+
+  <%- include('../partials/header'); %>
+
+    <body>
+      <% if (quote) { %>
+        <p>Current: <%= quote.c %></p>
+        <p>Open: <%= quote.o %></p>
+        <p>High: <%= quote.h %></p>
+        <p>Low: <%= quote.l %></p>
+      <% } %>
+    </body>
+
+    <%- include('../partials/footer'); %>
+
+</html>
