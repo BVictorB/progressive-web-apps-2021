@@ -11,7 +11,7 @@ require("dotenv").config()
 app
   .set('view engine', 'ejs')
   .set('views', 'src/views')
-  .use(bodyParser.json())
+  .use(express.json())
   .use(express.static('src/static'))
   .listen(3000)
 
@@ -26,6 +26,7 @@ setInterval(_ => {
 }, 10000)
 
 app.post('/subscribe', (req, res) => {
+  console.log(req.body)
   res.status(201).json({})
   subscriptions.push(req.body)
 })
