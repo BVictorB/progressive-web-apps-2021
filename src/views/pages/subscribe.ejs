@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head'); %>
+
+  <%- include('../partials/header'); %>
+
+    <body>
+      <form>
+        <label>
+          Symbol
+          <input id="symbol" type="text">
+        </label>
+        <label>
+          Price
+          <input id="price" type="number">
+        </label>
+        <button type="submit">Subscribe</button>
+      </form>
+      
+      <script src="/scripts/subscribe.js"></script>
+    </body>
+
+    <%- include('../partials/footer'); %>
+
+</html>

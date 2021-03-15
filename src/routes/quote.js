@@ -1,7 +1,9 @@
+require('dotenv').config()
+
 const
   fetch = require('node-fetch'),
-  token = 'c15j4kv48v6tvr5klm7g'
-
+  token = process.env.API_TOKEN
+  
 const getQuote = (symbol) => {
   return fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol.toUpperCase()}&token=${token}`)
     .then(res => res.json())
