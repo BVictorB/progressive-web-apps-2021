@@ -1,0 +1,9 @@
+{
+  "name": "progressive-web-apps-2021",
+  "short_name": "progressive-web-apps-2021",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}
