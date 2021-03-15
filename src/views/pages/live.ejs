@@ -11,7 +11,9 @@
         <p id="live-symbol">Loading live data, this might take a second...</p>
       <% } %>
       <script>
-        const symbol = <%- JSON.stringify(symbol) %>
+        const 
+          symbol = <%- JSON.stringify(symbol) %>,
+          token = <%- JSON.stringify(token) %>
       </script>
       <script src="/scripts/socket.js"></script>
     </body>

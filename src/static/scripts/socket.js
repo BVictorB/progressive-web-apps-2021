@@ -1,5 +1,4 @@
 const 
-  token = 'c15j4kv48v6tvr5klm7g',
   socket = new WebSocket(`wss://ws.finnhub.io?token=${token}`),
   el = document.querySelector('#live-symbol')
 

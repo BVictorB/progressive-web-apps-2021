@@ -2,7 +2,6 @@ const
   express = require('express'),
   app = express(),
   webPush = require('web-push'),
-  bodyParser = require('body-parser'),
   router = require('./src/router'),
   checkNotification = require('./src/utils/checkNotification')
 
@@ -26,7 +25,6 @@ setInterval(_ => {
 }, 10000)
 
 app.post('/subscribe', (req, res) => {
-  console.log(req.body)
   res.status(201).json({})
   subscriptions.push(req.body)
 })
