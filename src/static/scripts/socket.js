@@ -3,11 +3,11 @@ const
   socket = new WebSocket(`wss://ws.finnhub.io?token=${token}`),
   el = document.querySelector('#live-symbol')
 
-socket.addEventListener('open', (e) => {
+socket.addEventListener('open', _ => {
   socket.send(JSON.stringify({ 'type': 'subscribe', 'symbol': symbol }))
 })
 
-socket.addEventListener('message', (e) => {
+socket.addEventListener('message', e => {
   const response = JSON.parse(e.data)
 
   if (response.data) {

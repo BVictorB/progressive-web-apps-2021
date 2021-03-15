@@ -2,9 +2,10 @@ const
   publicVapidKey = 'BL8WVy_mnBpSZiErFaP1O5_TZQPDCxiQtq1rJNY0A8YwTMAUdtaVKg87bmeK4_TuVPUUOXAFp0Sx9EYHgFAc2g0',
   form = document.querySelector('form'),
   symbol = document.querySelector('#symbol'),
-  price = document.querySelector('#price')
+  price = document.querySelector('#price'),
+  errorMsg = document.querySelector('#errorMsg')
 
-const urlBase64ToUint8Array = (base64String) => {
+const urlBase64ToUint8Array = base64String => {
   const padding = '='.repeat((4 - base64String.length % 4) % 4)
   const base64 = (base64String + padding)
     .replace(/-/g, '+')
@@ -19,7 +20,7 @@ const urlBase64ToUint8Array = (base64String) => {
   return outputArray
 }
 
-const send = async (e) => {
+const send = async e => {
   e.preventDefault()
   if (!symbol.value || !price.value) {
     alert('Please fill in all the required fields!')
@@ -52,4 +53,5 @@ const send = async (e) => {
 
 if ('serviceWorker' in navigator) {
   form.addEventListener('submit', send)
+  errorMsg.remove()
 }

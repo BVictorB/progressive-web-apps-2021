@@ -25,10 +25,6 @@ setInterval(_ => {
   })
 }, 10000)
 
-app.get('/subscribe', (req, res) => {
-  res.render('pages/subscribe')
-})
-
 app.post('/subscribe', (req, res) => {
   res.status(201).json({})
   subscriptions.push(req.body)
