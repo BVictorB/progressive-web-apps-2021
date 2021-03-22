@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head'); %>
+
+  <%- include('../partials/header'); %>
+
+    <body>
+      <form action="/news" method="POST">
+        <% if(locals.input){ %>
+          <label>
+            Symbol
+            <input type="text" name="symbol" value="<%= input.symbol %>" />
+          </label>
+          <label>
+            From
+            <input type="date" name="from" value="<%= input.from %>" />
+          </label>
+          <label>
+            To
+            <input type="date" name="to" value="<%= input.to %>" />
+          </label>
+        <% } else{ %>  
+          <label>
+            Symbol
+            <input type="text" name="symbol" />
+          </label>
+          <label>
+            From
+            <input type="date" name="from" />
+          </label>
+          <label>
+            To
+            <input type="date" name="to" />
+          </label>
+        <% } %>
+        <button type="submit">Submit</button>
+      </form>
+      <% if (locals.news) { %>
+        <% news.forEach(newsItem => { %>
+          <div>
+            <h2><%= newsItem.headline %></h2>
+            <h3><%= new Date(newsItem.datetime * 1000) %></h3>
+            <p><%= newsItem.summary %></p>
+            <img src="<%= newsItem.image %>"/>
+            <a href="<%= newsItem.url %>">link</a>
+          </div>
+        <% }) %>
+      <% } %>
+    </body>
+
+    <%- include('../partials/footer'); %>
+
+</html>

@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const
   express = require('express'),
   app = express(),
@@ -5,12 +7,11 @@ const
   router = require('./src/router'),
   checkNotification = require('./src/utils/checkNotification')
 
-require("dotenv").config()
-
 app
   .set('view engine', 'ejs')
   .set('views', 'src/views')
   .use(express.json())
+  .use(express.urlencoded({ extended: true }))
   .use(express.static('src/static'))
   .listen(3000)
 
