@@ -8,7 +8,7 @@ const quote = async (req, res) => {
       symbol = req.params.symbol,
       quote = await getData(`https://finnhub.io/api/v1/quote?symbol=${symbol.toUpperCase()}&token=${token}`)
   
-    res.render('./pages/quote', { quote })
+    res.render('pages/quote', { quote })
   } else {
     res.send('quote')
   }

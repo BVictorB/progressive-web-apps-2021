@@ -6,7 +6,7 @@ const live = (req, res) => {
       symbol = req.params.symbol.toUpperCase(),
       token = process.env.API_TOKEN
 
-    res.render('./pages/live', { symbol, token })
+    res.render('pages/live', { symbol, token })
   } else {
     res.send('live')
   }
