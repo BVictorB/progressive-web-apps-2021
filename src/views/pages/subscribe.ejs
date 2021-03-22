@@ -3,9 +3,9 @@
 
 <%- include('../partials/head'); %>
 
-  <%- include('../partials/header'); %>
-
     <body>
+      <%- include('../partials/header'); %>
+
       <p id="errorMsg">Oops... something went wrong!</p>
       <form>
         <label>
@@ -23,8 +23,8 @@
         const vapidKey = <%- JSON.stringify(publicVapidKey) %>
       </script>
       <script src="/scripts/subscribe.js"></script>
-    </body>
 
-    <%- include('../partials/footer'); %>
+      <%- include('../partials/footer'); %>
+    </body>
 
 </html>

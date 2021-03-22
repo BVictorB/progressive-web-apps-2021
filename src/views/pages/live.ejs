@@ -3,9 +3,9 @@
 
 <%- include('../partials/head'); %>
 
-  <%- include('../partials/header'); %>
-
     <body>
+      <%- include('../partials/header'); %>
+
       <% if (symbol) { %>
         <p>Symbol: <%= symbol %></p>
         <p id="live-symbol">Loading live data, this might take a second...</p>
@@ -16,8 +16,8 @@
           token = <%- JSON.stringify(token) %>
       </script>
       <script src="/scripts/socket.js"></script>
+      
+      <%- include('../partials/footer'); %>
     </body>
-
-    <%- include('../partials/footer'); %>
 
 </html>

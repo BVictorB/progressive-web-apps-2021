@@ -3,17 +3,17 @@
 
 <%- include('../partials/head'); %>
 
-  <%- include('../partials/header'); %>
-
     <body>
+      <%- include('../partials/header'); %>
+
       <% if (quote) { %>
         <p>Current: $<%= quote.c %></p>
         <p>Open: $<%= quote.o %></p>
         <p>High: $<%= quote.h %></p>
         <p>Low: $<%= quote.l %></p>
       <% } %>
-    </body>
 
-    <%- include('../partials/footer'); %>
+      <%- include('../partials/footer'); %>
+    </body>
 
 </html>

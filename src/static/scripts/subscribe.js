@@ -28,7 +28,7 @@ const subscribe = async e => {
     return
   }
   
-  const register = await navigator.serviceWorker.register('/worker.js')
+  const register = await navigator.serviceWorker.register('/sw.js')
 
   const subscription = await register.pushManager.subscribe({
     userVisibleOnly: true,

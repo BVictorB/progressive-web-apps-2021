@@ -5,7 +5,8 @@ const
   quote = require('./routes/quote'),
   live = require('./routes/live'),
   subscribe = require('./routes/subscribe'),
-  news = require('./routes/news')
+  news = require('./routes/news'),
+  offline = require('./routes/offline')
 
 router
   .get('/', home)
@@ -16,5 +17,6 @@ router
   .get('/subscribe', subscribe)
   .get('/news', news)
   .post('/news', news)
+  .get('/offline', offline)
 
 module.exports = router
