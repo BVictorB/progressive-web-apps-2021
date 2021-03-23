@@ -6,26 +6,30 @@
     <body>
       <%- include('../partials/header'); %>
 
-      <h1>Live</h1>
-
-      <form action="/live" method="POST">
-        <label>
-          Symbol
-          <input type="text" name="symbol" value="<%= locals.symbol && symbol %>" />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-
-      <% if (locals.symbol) { %>
-        <p>Symbol: <%= symbol %></p>
-        <p id="live-symbol">Loading live data, this might take a second...</p>
-        <script>
-          const 
-            symbol = <%- JSON.stringify(symbol) %>,
-            token = <%- JSON.stringify(token) %>
-        </script>
-        <script src="/scripts/socket.js"></script>
-      <% } %>
+      <main>
+        <h1>Live</h1>
+        <form action="/live" method="POST">
+          <label>
+            Symbol
+            <input type="text" name="symbol" value="<%= locals.symbol && symbol %>" />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+  
+        <% if (locals.symbol) { %>
+          <p>Symbol: <%= symbol %></p>
+          <p id="live-symbol">Loading live data, this might take a second...</p>
+          <script>
+            const 
+              symbol = <%- JSON.stringify(symbol) %>,
+              token = <%- JSON.stringify(token) %>
+          </script>
+          <script src="/scripts/socket.js"></script>
+          <form action="/favorites" method="POST">
+            <button type="submit" name="symbol" value="<%= locals.symbol && symbol %>">Add to favorites</button>
+          </form>
+        <% } %>
+      </main>
       
       <%- include('../partials/footer'); %>
     </body>

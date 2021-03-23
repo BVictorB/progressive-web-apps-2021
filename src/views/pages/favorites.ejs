@@ -6,14 +6,16 @@
     <body>
       <%- include('../partials/header'); %>
 
-      <h1>Favorites</h1>
-      <% if(locals.favorites){ %>
-        <% favorites.forEach(favorite => { %>
-          <p><%= favorite %></p>
-        <% }) %>
-      <% } else{ %>  
-        <p>You have no favorites yet.</p>
-      <% } %>
+      <main>
+        <h1>Favorites</h1>
+        <% if(locals.favorites){ %>
+          <% favorites.forEach(favorite => { %>
+            <p><%= favorite %></p>
+          <% }) %>
+        <% } else{ %>  
+          <p>You have no favorites yet.</p>
+        <% } %>
+      </main>
       
       <%- include('../partials/footer'); %>
     </body>

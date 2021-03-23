@@ -6,34 +6,36 @@
     <body>
       <%- include('../partials/header'); %>
 
-      <h1>News</h1>
-
-      <form action="/news" method="POST">
-        <label>
-          Symbol
-          <input type="text" name="symbol" value="<%= locals.input && input.symbol %>" />
-        </label>
-        <label>
-          From
-          <input type="date" name="from" value="<%= locals.input && input.from %>" />
-        </label>
-        <label>
-          To
-          <input type="date" name="to" value="<%= locals.input && input.to %>" />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      <% if (locals.news) { %>
-        <% news.forEach(newsItem => { %>
-          <div>
-            <h2><%= newsItem.headline %></h2>
-            <h3><%= new Date(newsItem.datetime * 1000) %></h3>
-            <p><%= newsItem.summary %></p>
-            <img src="<%= newsItem.image %>"/>
-            <a href="<%= newsItem.url %>">link</a>
-          </div>
-        <% }) %>
-      <% } %>
+      <main>
+        <h1>News</h1>
+        <form action="/news" method="POST">
+          <label>
+            Symbol
+            <input type="text" name="symbol" value="<%= locals.input && input.symbol %>" />
+          </label>
+          <label>
+            From
+            <input type="date" name="from" value="<%= locals.input && input.from %>" />
+          </label>
+          <label>
+            To
+            <input type="date" name="to" value="<%= locals.input && input.to %>" />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+        <% if (locals.news) { %>
+          <section class="news-container">              
+          <% news.forEach(newsItem => { %>
+            <a class="news-block" href="<%= newsItem.url %>">
+              <h2><%= newsItem.headline %></h2>
+              <h3><%= new Date(newsItem.datetime * 1000).toDateString() %></h3>
+              <p><%= newsItem.summary %></p>
+              <img src="<%= newsItem.image %>"/>
+            </a>
+          <% }) %>
+          </section>
+        <% } %>
+      </main>
       
       <%- include('../partials/footer'); %>
     </body>
