@@ -11,9 +11,9 @@ const
 router
   .get('/', home)
   .get('/quote', quote)
-  .get('/quote/:symbol', quote)
+  .post('/quote', quote)
   .get('/live', live)
-  .get('/live/:symbol', live)
+  .post('/live/', live)
   .get('/subscribe', subscribe)
   .get('/news', news)
   .post('/news', news)

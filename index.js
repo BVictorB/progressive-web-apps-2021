@@ -4,6 +4,7 @@ const
   express = require('express'),
   app = express(),
   webPush = require('web-push'),
+  compression = require('compression'),
   router = require('./src/router'),
   checkNotification = require('./src/utils/checkNotification'),
   path = require('path')
@@ -11,6 +12,7 @@ const
 app
   .set('view engine', 'ejs')
   .set('views', path.join(__dirname + '/src/views/'))
+  .use(compression())
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname + '/src/static/')))

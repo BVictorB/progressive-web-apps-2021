@@ -13,7 +13,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   e.respondWith(caches.match(e.request)
     .then(cached => {
-      if (cached) return cachedRes
+      if (cached) return cached
       return fetch(e.request)
         .then(res => res)
         .catch(_ => caches.open('caches').then(cache => cache.match('/offline')))

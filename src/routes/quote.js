@@ -3,14 +3,14 @@ const
   token = process.env.API_TOKEN
 
 const quote = async (req, res) => {
-  if (req.params.symbol) {
+  if (req.method === 'GET') {
+    res.render('pages/quote')  
+  } else if (req.method === 'POST') {
     const 
-      symbol = req.params.symbol,
-      quote = await getData(`https://finnhub.io/api/v1/quote?symbol=${symbol.toUpperCase()}&token=${token}`)
-  
-    res.render('pages/quote', { quote })
-  } else {
-    res.send('quote')
+      symbol = req.body.symbol.toUpperCase(),
+      quote = await getData(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${token}`)
+
+    res.render('pages/quote', { symbol, quote })  
   }
 }
 
