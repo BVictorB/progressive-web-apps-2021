@@ -5,9 +5,10 @@ const
   app = express(),
   webPush = require('web-push'),
   compression = require('compression'),
+  cookieParser = require('cookie-parser'),
+  path = require('path'),
   router = require('./src/router'),
-  checkNotification = require('./src/utils/checkNotification'),
-  path = require('path')
+  checkNotification = require('./src/utils/checkNotification')
 
 app
   .set('view engine', 'ejs')
@@ -15,6 +16,7 @@ app
   .use(compression())
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
+  .use(cookieParser())
   .use(express.static(path.join(__dirname + '/src/static/')))
   .listen(3000)
 

@@ -1,5 +1,3 @@
-require("dotenv").config()
-
 const live = (req, res) => {
   if (req.method === 'GET') {
     res.render('pages/live')  

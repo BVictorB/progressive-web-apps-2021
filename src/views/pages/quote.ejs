@@ -21,6 +21,9 @@
         <p>Open: $<%= quote.o %></p>
         <p>High: $<%= quote.h %></p>
         <p>Low: $<%= quote.l %></p>
+        <form action="/favorites" method="POST">
+          <button type="submit" name="symbol" value="<%= locals.symbol && symbol %>">Add to favorites</button>
+        </form>
       <% } %>
 
       <%- include('../partials/footer'); %>
