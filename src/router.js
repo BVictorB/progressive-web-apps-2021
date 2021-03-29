@@ -10,6 +10,7 @@ const
 router
   .get('/', home)
   .get('/symbol', symbol)
+  .get('/symbol/:symbol', symbol)
   .post('/symbol', symbol)
   .get('/news', news)
   .post('/news', news)

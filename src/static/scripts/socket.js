@@ -1,7 +1,9 @@
 const 
   socket = new WebSocket(`wss://ws.finnhub.io?token=${token}`),
-  el = document.querySelector('#live-symbol')
+  el = document.querySelector('#live-symbol'),
+  liveSection = document.querySelector('#liveSection')
 
+liveSection.style.display = 'block'
 socket.addEventListener('open', _ => {
   socket.send(JSON.stringify({ 'type': 'subscribe', 'symbol': symbol }))
 })

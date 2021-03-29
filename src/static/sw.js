@@ -1,7 +1,7 @@
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open('caches')
-      .then(cache => cache.addAll(['manifest.json', '/offline', 'styles/style.css']))
+      .then(cache => cache.addAll(['manifest.json', '/favorites', 'styles/style.css']))
       .then(_ => self.skipWaiting())
   )
 })
@@ -16,16 +16,26 @@ self.addEventListener('fetch', e => {
       if (cached) return cached
       return fetch(e.request)
         .then(res => res)
-        .catch(_ => caches.open('caches').then(cache => cache.match('/offline')))
+        .catch(_ => caches.open('caches').then(cache => cache.match('/favorites')))
     })
   )
 })
 
 self.addEventListener('push', e => {
-  const data = e.data.json()
+  const { title, content, icon, url } = e.data.json()
 
-  self.registration.showNotification(data.title, {
-    body: data.content,
-    icon: data.icon
+  self.registration.showNotification(title, {
+    body: content,
+    icon: icon,
+    data: {
+      url: url
+    }
   })
+})
+
+self.addEventListener('notificationclick', e => {
+  e.notification.close()
+  e.waitUntil(
+    clients.openWindow(e.notification.data.url)
+  )
 })

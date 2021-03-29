@@ -7,14 +7,19 @@
       <%- include('../partials/header'); %>
 
       <main>
-        <h1>Symbol</h1>
+        <h1>Symbol lookup</h1>
         <form action="/symbol" method="POST">
           <label>
             Symbol
-            <input type="text" name="symbol" value="<%= locals.symbol && symbol %>" />
+            <input type="text" name="symbol" value="<%= locals.symbol && symbol %>" placeholder="Symbol"/>
           </label>
-          <button type="submit">Submit</button>
+          <button type="submit">Look up symbol</button>
         </form>
+        <% if (locals.symbol) { %>
+        <form action="/favorites" method="POST">
+          <button type="submit" name="symbol" value="<%= symbol %>">Add <%= symbol %> to your favorites</button>
+        </form>
+        <% } %>
 
         <% if (locals.quote) { %>
           <h2>Static quote</h2>
@@ -25,29 +30,24 @@
         <% } %>
   
         <% if (locals.symbol) { %>
-          <h2>Live price</h2>
-          <p id="live-symbol">Loading live data, this might take a second...</p>
-          <script>
-            const 
-              symbol = <%- JSON.stringify(symbol) %>,
-              token = <%- JSON.stringify(token) %>
-          </script>
-          <script src="/scripts/socket.js"></script>
-          <form action="/favorites" method="POST">
-            <button type="submit" name="symbol" value="<%= locals.symbol && symbol %>">Add to favorites</button>
-          </form>
-          <h2>Subscribe to notifications</h2>
-          <p id="errorMsg">Oops... something went wrong!</p>
+          <section id="liveSection">
+            <h2>Live price</h2>
+            <p id="live-symbol">Loading live data, this might take a second...</p>
+          </section>
           <form id="subscribeForm">
             <label>
-              Price
-              <input id="price" type="number">
+              Send me a notification when the price of this symbol drops below:
+              <input id="price" type="number" placeholder="Price ($)">
             </label>
             <button type="submit">Subscribe</button>
           </form>
           <script>
-            const vapidKey = <%- JSON.stringify(publicVapidKey) %>
+            const 
+              symbol = <%- JSON.stringify(symbol) %>,
+              token = <%- JSON.stringify(token) %>,
+              vapidKey = <%- JSON.stringify(publicVapidKey) %>
           </script>
+          <script src="/scripts/socket.js"></script>
           <script src="/scripts/subscribe.js"></script>
         <% } %>
         <% if (locals.news) { %>

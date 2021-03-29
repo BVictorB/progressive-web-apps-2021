@@ -10,7 +10,24 @@
         <h1>Favorites</h1>
         <% if(locals.favorites){ %>
           <% favorites.forEach(favorite => { %>
-            <p><%= favorite %></p>
+            <div>
+              <h2><%= favorite.symbol %></h2>
+              <p>Last updated: <%= favorite.updated %></p>
+              <h3>Static quote:</h3>
+              <p>Current: $<%= favorite.quote.c %></p>
+              <p>Open: $<%= favorite.quote.o %></p>
+              <p>High: $<%= favorite.quote.h %></p>
+              <p>Low: $<%= favorite.quote.l %></p>
+              <h3>News today:</h3>
+              <% favorite.news.forEach(newsItem => { %>
+                <a class="news-block" href="<%= newsItem.url %>">
+                  <h2><%= newsItem.headline %></h2>
+                  <h3><%= new Date(newsItem.datetime * 1000).toDateString() %></h3>
+                  <p><%= newsItem.summary %></p>
+                  <img src="<%= newsItem.image %>"/>
+                </a>
+              <% }) %>
+            </div>
           <% }) %>
         <% } else{ %>  
           <p>You have no favorites yet.</p>

@@ -1,6 +1,24 @@
-const favorites = (req, res) => {
+const
+  getData = require('../utils/getData'),
+  token = process.env.API_TOKEN
+
+const favorites = async (req, res) => {
   if (req.method === 'GET') {
-    const favorites = req.cookies.favorites
+    const 
+      favoriteCookies = req.cookies.favorites,
+      today = new Date().toISOString().slice(0, 10)
+
+    const favorites = await Promise.all(favoriteCookies.map(async favorite => {
+      const quote = await getData(`https://finnhub.io/api/v1/quote?symbol=${favorite}&token=${token}`)
+      const news = await getData(`https://finnhub.io/api/v1/company-news?symbol=${favorite}&from=${today}&to=${today}&token=${token}`)
+      return {
+        symbol: favorite,
+        updated: new Date(),
+        quote,
+        news
+      }
+    }))
+
     res.render('pages/favorites', { favorites })
   } else if (req.method === 'POST') {
     const 

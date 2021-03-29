@@ -1,7 +1,6 @@
 const 
   form = document.querySelector('#subscribeForm'),
-  price = document.querySelector('#price'),
-  errorMsg = document.querySelector('#errorMsg')
+  price = document.querySelector('#price')
 
 const urlBase64ToUint8Array = base64String => {
   const padding = '='.repeat((4 - base64String.length % 4) % 4)
@@ -51,5 +50,5 @@ const subscribe = async e => {
 
 if ('serviceWorker' in navigator) {
   form.addEventListener('submit', subscribe)
-  errorMsg.remove()
+  form.style.display = 'block'
 }
