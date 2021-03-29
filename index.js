@@ -11,7 +11,8 @@ const
   compression = require('compression'),
   cookieParser = require('cookie-parser'),
   router = require('./src/router'),
-  checkNotification = require('./src/utils/checkNotification')
+  checkNotification = require('./src/utils/checkNotification'),
+  port = 3000
 
 mongoose.connect(process.env.DB_URL, {
   useUnifiedTopology: true,
@@ -31,7 +32,7 @@ app
   .use(compression())
   .use(minify())
   .use(express.static(__dirname + '/src/static'))
-  .listen(3000)
+  .listen(process.env.PORT || port)
 
 webPush.setVapidDetails('mailto:replacethislater@test.com', process.env.PUBLIC_VAPID, process.env.PRIVATE_VAPID)
 

@@ -13,7 +13,7 @@ const checkNotification = async sub => {
     title: `${profile.ticker} is now only $${roundNum(quote.c, 2)}`,
     content: `That's $${roundNum(sub.price - quote.c, 2)} lower than your set price of $${roundNum(sub.price, 2)}.`,
     icon: profile.logo,
-    url: `http://localhost:3000/symbol/${profile.ticker}`
+    url: `${process.env.URL}symbol/${profile.ticker}`
   })
 
   if (sub.price > quote.c) {
