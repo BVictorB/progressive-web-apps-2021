@@ -5,29 +5,31 @@
 
     <body>
       <%- include('../partials/header'); %>
-
       <main>
         <h1>Favorites</h1>
         <% if(locals.favorites){ %>
           <% favorites.forEach(favorite => { %>
-            <div>
+            <article>
               <h2><%= favorite.symbol %></h2>
-              <p>Last updated: <%= favorite.updated %></p>
-              <h3>Static quote:</h3>
+              <p>Last updated: <%= favorite.updated.toDateString() === new Date().toDateString() ? 'today' : `on ${favorite.updated.toLocaleDateString('en-GB', { weekday: 'long' })}` %> at <%= favorite.updated.toLocaleTimeString('en-GB').slice(0, -3) %></p>
+              <form action="/remove" method="POST">
+                <button type="submit" name="symbol" value="<%= favorite.symbol %>">Remove <%= favorite.symbol %> from your favorites</button>
+              </form>
+              <h2>Static quote:</h2>
               <p>Current: $<%= favorite.quote.c %></p>
               <p>Open: $<%= favorite.quote.o %></p>
               <p>High: $<%= favorite.quote.h %></p>
               <p>Low: $<%= favorite.quote.l %></p>
-              <h3>News today:</h3>
+              <h2><%= favorite.news.length ? 'News today:' : 'No news today' %></h2>
               <% favorite.news.forEach(newsItem => { %>
                 <a class="news-block" href="<%= newsItem.url %>">
-                  <h2><%= newsItem.headline %></h2>
+                  <h3><%= newsItem.headline %></h3>
                   <h3><%= new Date(newsItem.datetime * 1000).toDateString() %></h3>
                   <p><%= newsItem.summary %></p>
-                  <img src="<%= newsItem.image %>"/>
+                  <img src="<%= newsItem.image %>" alt="<%= newsItem.headline %>"/>
                 </a>
               <% }) %>
-            </div>
+            </article>
           <% }) %>
         <% } else{ %>  
           <p>You have no favorites yet.</p>

@@ -8,18 +8,22 @@ const favorites = async (req, res) => {
       favoriteCookies = req.cookies.favorites,
       today = new Date().toISOString().slice(0, 10)
 
-    const favorites = await Promise.all(favoriteCookies.map(async favorite => {
-      const quote = await getData(`https://finnhub.io/api/v1/quote?symbol=${favorite}&token=${token}`)
-      const news = await getData(`https://finnhub.io/api/v1/company-news?symbol=${favorite}&from=${today}&to=${today}&token=${token}`)
-      return {
-        symbol: favorite,
-        updated: new Date(),
-        quote,
-        news
-      }
-    }))
-
-    res.render('pages/favorites', { favorites })
+    if (favoriteCookies) {
+      const favorites = await Promise.all(favoriteCookies.map(async favorite => {
+        const quote = await getData(`https://finnhub.io/api/v1/quote?symbol=${favorite}&token=${token}`)
+        const news = await getData(`https://finnhub.io/api/v1/company-news?symbol=${favorite}&from=${today}&to=${today}&token=${token}`)
+        return {
+          symbol: favorite,
+          updated: new Date(),
+          quote,
+          news
+        }
+      }))
+  
+      res.render('pages/favorites', { favorites })
+    } else {
+      res.render('pages/favorites')
+    }
   } else if (req.method === 'POST') {
     const 
       newSymbol = req.body.symbol,
@@ -32,7 +36,7 @@ const favorites = async (req, res) => {
 
     const favorites = savedSymbols ? [...savedSymbols, newSymbol] : [newSymbol]
     res.cookie('favorites', favorites)
-    res.render('pages/favorites', { favorites })
+    res.redirect('/favorites')
   }
 }
 

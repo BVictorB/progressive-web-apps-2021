@@ -1,7 +1,7 @@
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open('caches')
-      .then(cache => cache.addAll(['manifest.json', '/favorites', 'styles/style.css']))
+      .then(cache => cache.addAll(['manifest.json', '/favorites', 'styles/style.css', 'images/logo.png']))
       .then(_ => self.skipWaiting())
   )
 })

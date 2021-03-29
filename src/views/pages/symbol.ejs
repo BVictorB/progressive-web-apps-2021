@@ -36,10 +36,10 @@
           </section>
           <form id="subscribeForm">
             <label>
-              Send me a notification when the price of this symbol drops below:
+              Get a notification when the price drops below a certain point:
               <input id="price" type="number" placeholder="Price ($)">
             </label>
-            <button type="submit">Subscribe</button>
+            <button type="submit">Subscribe to notifications</button>
           </form>
           <script>
             const 
@@ -55,10 +55,10 @@
           <section class="news-container">              
           <% news.forEach(newsItem => { %>
             <a class="news-block" href="<%= newsItem.url %>">
-              <h2><%= newsItem.headline %></h2>
+              <h3><%= newsItem.headline %></h3>
               <h3><%= new Date(newsItem.datetime * 1000).toDateString() %></h3>
               <p><%= newsItem.summary %></p>
-              <img src="<%= newsItem.image %>"/>
+              <img src="<%= newsItem.image %>" alt="<%= newsItem.headline %>"/>
             </a>
           <% }) %>
           </section>

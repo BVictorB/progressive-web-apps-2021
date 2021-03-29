@@ -1,5 +1,5 @@
 const home = (req, res) => {
-  res.render('pages/index')
+  res.redirect('/symbol')
 }
 
 module.exports = home

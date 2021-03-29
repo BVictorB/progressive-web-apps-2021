@@ -21,16 +21,16 @@
             To
             <input type="date" name="to" value="<%= locals.input && input.to %>" />
           </label>
-          <button type="submit">Submit</button>
+          <button type="submit">Get news</button>
         </form>
         <% if (locals.news) { %>
           <section class="news-container">              
           <% news.forEach(newsItem => { %>
             <a class="news-block" href="<%= newsItem.url %>">
-              <h2><%= newsItem.headline %></h2>
+              <h3><%= newsItem.headline %></h3>
               <h3><%= new Date(newsItem.datetime * 1000).toDateString() %></h3>
               <p><%= newsItem.summary %></p>
-              <img src="<%= newsItem.image %>"/>
+              <img src="<%= newsItem.image %>" alt="<%= newsItem.headline %>"/>
             </a>
           <% }) %>
           </section>

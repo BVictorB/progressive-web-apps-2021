@@ -4,8 +4,8 @@ const
   home = require('./routes/home'),
   symbol = require('./routes/symbol'),
   news = require('./routes/news'),
-  offline = require('./routes/offline'),
-  favorites = require('./routes/favorites')
+  favorites = require('./routes/favorites'),
+  remove = require('./routes/remove')
 
 router
   .get('/', home)
@@ -14,8 +14,8 @@ router
   .post('/symbol', symbol)
   .get('/news', news)
   .post('/news', news)
-  .get('/offline', offline)
   .get('/favorites', favorites)
   .post('/favorites', favorites)
+  .post('/remove', remove)
 
 module.exports = router

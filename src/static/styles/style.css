@@ -19,6 +19,25 @@ header {
   text-align: center;
 }
 
+h1 {
+  color: #2c3e50;
+  font-size: 36px;
+  text-decoration: underline;
+  text-decoration-color: #1f6290;
+  text-decoration-thickness: 4px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-top: 24px;
+}
+
+nav img {
+  margin-top: 16px;
+  width: 100px;
+}
+
 nav ul {
   list-style-type: none;
 }
@@ -42,7 +61,9 @@ nav a:focus, nav a:hover {
 }
 
 header p {
-  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 16px;
+  font-size: 36px;
   font-weight: 700;
   text-align: center;
 }
@@ -59,7 +80,7 @@ footer {
   background: #2c3e50;
   width: 100%;
   height: 150px;
-  color: #fff;
+  color: white;
   text-align: center;
 }
 
@@ -77,6 +98,10 @@ footer {
   background: #2c3e50;
   background-image: linear-gradient(#2c3e50, #1f6290);
   transition: transform 120ms ease-in-out;
+}
+
+.news-block:first-of-type {
+  margin: 16px 0 32px;
 }
 
 .news-block img {
