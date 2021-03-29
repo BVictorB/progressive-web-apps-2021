@@ -18,6 +18,9 @@ const checkNotification = async sub => {
 
   if (sub.price > quote.c) {
     webPush.sendNotification(sub.subscription, payload).catch(err => console.log(err))
+    return true
+  } else {
+    return false
   }
 }
 

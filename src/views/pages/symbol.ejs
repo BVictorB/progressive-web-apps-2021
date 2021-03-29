@@ -50,7 +50,7 @@
           <script src="/scripts/socket.js"></script>
           <script src="/scripts/subscribe.js"></script>
         <% } %>
-        <% if (locals.news) { %>
+        <% if (locals.news && locals.news.length) { %>
           <h2>News from the past week</h2>
           <section class="news-container">              
           <% news.forEach(newsItem => { %>

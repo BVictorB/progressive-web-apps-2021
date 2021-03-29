@@ -2,6 +2,9 @@ require("dotenv").config()
 
 const
   express = require('express'),
+  mongoose = require('mongoose'),
+  db = mongoose.connection,
+  Subscription = require('./src/models/subscription'),
   app = express(),
   webPush = require('web-push'),
   compression = require('compression'),
@@ -9,6 +12,15 @@ const
   path = require('path'),
   router = require('./src/router'),
   checkNotification = require('./src/utils/checkNotification')
+
+mongoose.connect(process.env.DB_URL, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+})
+
+db.once('open', _ => {
+  console.log('Connected to MongoDB!')
+})
 
 app
   .set('view engine', 'ejs')
@@ -22,17 +34,14 @@ app
 
 webPush.setVapidDetails('mailto:replacethislater@test.com', process.env.PUBLIC_VAPID, process.env.PRIVATE_VAPID)
 
-let subscriptions = []
 
-setInterval(_ => {
-  subscriptions.forEach(subscription => {
-    checkNotification(subscription)
+setInterval(async _ => {
+  const subscriptions = await Subscription.find({})
+  subscriptions.forEach(async subscription => {
+    if (await checkNotification(subscription)) {
+      Subscription.find({ _id: subscription.id }).remove().exec()
+    }
   })
-}, 10000)
-
-app.post('/subscribe', (req, res) => {
-  res.status(201).json({})
-  subscriptions.push(req.body)
-})
+}, 60000)
 
 app.use(router)

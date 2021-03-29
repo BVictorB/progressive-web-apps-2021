@@ -5,7 +5,8 @@ const
   symbol = require('./routes/symbol'),
   news = require('./routes/news'),
   favorites = require('./routes/favorites'),
-  remove = require('./routes/remove')
+  remove = require('./routes/remove'),
+  subscribe = require('./routes/subscribe')
 
 router
   .get('/', home)
@@ -17,5 +18,6 @@ router
   .get('/favorites', favorites)
   .post('/favorites', favorites)
   .post('/remove', remove)
+  .post('/subscribe', subscribe)
 
 module.exports = router

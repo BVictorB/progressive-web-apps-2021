@@ -171,3 +171,28 @@ button:hover, button:focus {
   border: 2px solid #2c3e50;
   outline: none;
 }
+
+.favorite-container {
+  margin-bottom: 32px;
+  padding: 1px 24px;
+  border-radius: 16px;
+  -webkit-box-shadow: 0 0 15px 6px rgba(0, 0, 0, .1);
+  -moz-box-shadow: 0 0 15px 6px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 15px 6px rgba(0, 0, 0, .1);
+}
+
+.favorite-container h2 {
+  margin-top: 16px;
+}
+
+.no-news {
+  margin-bottom: 16px;
+}
+
+.favorite-symbol {
+  color: #2c3e50;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: #1f6290;
+  text-decoration-thickness: 3px;
+}

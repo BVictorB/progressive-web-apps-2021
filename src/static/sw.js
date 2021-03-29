@@ -1,7 +1,7 @@
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open('caches')
-      .then(cache => cache.addAll(['manifest.json', '/favorites', 'styles/style.css', 'images/logo.png']))
+      .then(cache => cache.addAll(['manifest.json', 'styles/style.css', 'images/logo.png']))
       .then(_ => self.skipWaiting())
   )
 })
@@ -16,7 +16,7 @@ self.addEventListener('fetch', e => {
       if (cached) return cached
       return fetch(e.request)
         .then(res => res)
-        .catch(_ => caches.open('caches').then(cache => cache.match('/favorites')))
+        // .catch(_ => caches.open('caches').then(cache => cache.match('/favorites')))
     })
   )
 })
