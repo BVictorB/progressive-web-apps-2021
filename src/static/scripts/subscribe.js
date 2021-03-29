@@ -1,6 +1,5 @@
 const 
-  form = document.querySelector('form'),
-  symbol = document.querySelector('#symbol'),
+  form = document.querySelector('#subscribeForm'),
   price = document.querySelector('#price'),
   errorMsg = document.querySelector('#errorMsg')
 
@@ -23,7 +22,7 @@ const urlBase64ToUint8Array = base64String => {
 const subscribe = async e => {
   e.preventDefault()
   
-  if (!symbol.value || !price.value) {
+  if (!price.value) {
     alert('Please fill in all the required fields!')
     return
   }
@@ -42,7 +41,7 @@ const subscribe = async e => {
     },
     body: JSON.stringify({
       subscription: subscription,
-      symbol: symbol.value,
+      symbol: symbol,
       price: price.value
     })
   })
