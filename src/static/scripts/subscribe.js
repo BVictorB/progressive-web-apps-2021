@@ -1,6 +1,7 @@
 const 
   form = document.querySelector('#subscribeForm'),
-  price = document.querySelector('#price')
+  price = document.querySelector('#price'),
+  btn = document.querySelector('#subscribeButton')
 
 const urlBase64ToUint8Array = base64String => {
   const padding = '='.repeat((4 - base64String.length % 4) % 4)
@@ -27,11 +28,12 @@ const subscribe = async e => {
   }
   
   const register = await navigator.serviceWorker.register('/sw.js')
-
   const subscription = await register.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(vapidKey)
   })
+
+  btn.innerHTML = 'Subscribed!'
 
   await fetch('/subscribe', {
     method: 'POST',
@@ -44,8 +46,6 @@ const subscribe = async e => {
       price: price.value
     })
   })
-
-  alert('You will receive a notification once the price of this symbol drops below your requested price!')
 }
 
 if ('serviceWorker' in navigator) {

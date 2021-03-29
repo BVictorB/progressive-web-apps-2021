@@ -126,6 +126,7 @@ footer {
 
 input {
   width: 280px;
+  max-width: 100%;
   border: 2px solid black;
   border-radius: 8px;
   padding: 8px 12px;
@@ -143,6 +144,7 @@ input:focus {
 label {
   display: block;
   width: 280px;
+  max-width: 100%;
   margin-top: 16px;
 }
 
@@ -157,6 +159,7 @@ button {
   border-radius: 8px;
   height: 40px;
   width: 280px;
+  max-width: 100%;
   background: #2c3e50;
   color: white;
   font-weight: 600;

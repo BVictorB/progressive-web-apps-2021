@@ -1,7 +1,16 @@
+const cacheItems = [
+  'manifest.json', 
+  'images/logo.png', 
+  'styles/style.css', 
+  'scripts/script.js',
+  'scripts/socket.js',
+  'scripts/subscribe.js'
+]
+
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open('caches')
-      .then(cache => cache.addAll(['manifest.json', 'styles/style.css', 'images/logo.png']))
+      .then(cache => cache.addAll(cacheItems))
       .then(_ => self.skipWaiting())
   )
 })
