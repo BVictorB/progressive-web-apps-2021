@@ -6,7 +6,8 @@ const
   news = require('./routes/news'),
   favorites = require('./routes/favorites'),
   remove = require('./routes/remove'),
-  subscribe = require('./routes/subscribe')
+  subscribe = require('./routes/subscribe'),
+  offline = require('./routes/offline')
 
 router
   .get('/', home)
@@ -19,5 +20,6 @@ router
   .post('/favorites', favorites)
   .post('/remove', remove)
   .post('/subscribe', subscribe)
+  .get('/offline', offline)
 
 module.exports = router

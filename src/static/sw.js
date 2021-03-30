@@ -4,7 +4,8 @@ const cacheItems = [
   'styles/style.css', 
   'scripts/script.js',
   'scripts/socket.js',
-  'scripts/subscribe.js'
+  'scripts/subscribe.js',
+  '/offline'
 ]
 
 self.addEventListener('install', e => {
@@ -25,7 +26,7 @@ self.addEventListener('fetch', e => {
       if (cached) return cached
       return fetch(e.request)
         .then(res => res)
-        // .catch(_ => caches.open('caches').then(cache => cache.match('/favorites')))
+        .catch(_ => caches.open('caches').then(cache => cache.match('/offline')))
     })
   )
 })
