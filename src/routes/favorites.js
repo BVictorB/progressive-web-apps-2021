@@ -20,7 +20,7 @@ const favorites = async (req, res) => {
         }
       }))
   
-      res.render('pages/favorites', { favorites })
+      res.render('pages/favorites', { favorites, url: process.env.URL })
     } else {
       res.render('pages/favorites')
     }
