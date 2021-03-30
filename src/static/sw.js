@@ -2,9 +2,6 @@ const cacheItems = [
   'manifest.json', 
   'images/logo.png', 
   'styles/style.css', 
-  'scripts/script.js',
-  'scripts/socket.js',
-  'scripts/subscribe.js',
   '/offline'
 ]
 
