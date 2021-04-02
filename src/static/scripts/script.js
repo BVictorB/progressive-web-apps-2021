@@ -1,1 +1,1 @@
-'serviceWorker' in navigator && navigator.serviceWorker.register('/sw.js', { scope: '.' })
+"serviceWorker"in navigator&&navigator.serviceWorker.register("/sw.js",{scope:"."});

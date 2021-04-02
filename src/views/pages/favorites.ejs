@@ -30,7 +30,7 @@
                   <h3><%= newsItem.headline %></h3>
                   <h3><%= new Date(newsItem.datetime * 1000).toDateString() %></h3>
                   <p><%= newsItem.summary %></p>
-                  <img src="<%= newsItem.image %>" alt="<%= newsItem.headline %>"/>
+                  <img src="<%= newsItem.image %>" loading="lazy" alt="<%= newsItem.headline %>"/>
                 </a>
               <% }) %>
             </article>

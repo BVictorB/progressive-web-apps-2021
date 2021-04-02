@@ -1,17 +1,1 @@
-const 
-  socket = new WebSocket(`wss://ws.finnhub.io?token=${token}`),
-  el = document.querySelector('#live-symbol'),
-  liveSection = document.querySelector('#liveSection')
-
-liveSection.style.display = 'block'
-socket.addEventListener('open', _ => {
-  socket.send(JSON.stringify({ 'type': 'subscribe', 'symbol': symbol }))
-})
-
-socket.addEventListener('message', e => {
-  const response = JSON.parse(e.data)
-
-  if (response.data) {
-    el.innerText = `$${response.data[0].p}`
-  }
-})
+const socket=new WebSocket("wss://ws.finnhub.io?token="+token),el=document.querySelector("#live-symbol"),liveSection=document.querySelector("#liveSection");liveSection.style.display="block",socket.addEventListener("open",e=>{socket.send(JSON.stringify({type:"subscribe",symbol:symbol}))}),socket.addEventListener("message",e=>{const t=JSON.parse(e.data);t.data&&(el.innerText="$"+t.data[0].p)});

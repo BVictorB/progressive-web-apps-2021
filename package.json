@@ -11,7 +11,9 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "sass:compile": "node-sass --include-path sass ./src/styles/main-screen.scss ./src/static/styles/style.css --output-style compressed",
-    "sass": "nodemon -e scss -x \"npm run sass:compile\""
+    "sass": "nodemon -e scss -x \"npm run sass:compile\"",
+    "uglify": "uglifyjs-folder ./src/scripts -x .js -eo ./src/static/scripts",
+    "build": "npm run sass:compile && npm run uglify"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.1",
     "node-sass": "^5.0.0",
+    "uglifyjs-folder": "^2.0.0",
     "web-push": "^3.4.4"
   },
   "devDependencies": {
