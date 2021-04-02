@@ -2,7 +2,6 @@ require("dotenv").config()
 
 const
   express = require('express'),
-  minify = require('express-minify'),
   mongoose = require('mongoose'),
   db = mongoose.connection,
   Subscription = require('./src/models/subscription'),
@@ -30,7 +29,6 @@ app
   .use(express.urlencoded({ extended: true }))
   .use(cookieParser())
   .use(compression())
-  .use(minify())
   .use(express.static(__dirname + '/src/static'))
   .listen(process.env.PORT || port)
 

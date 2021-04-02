@@ -1,0 +1,89 @@
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: $accent;
+  font-size: 36px;
+  text-decoration: underline;
+  text-decoration-color: $active;
+  text-decoration-thickness: 4px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  color: $accent;
+  margin-top: 24px;
+}
+
+
+input {
+  width: 280px;
+  max-width: 100%;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: block;
+  margin-top: 4px;
+  caret-color: $active;
+  transition: all 200ms ease-in-out;
+
+  &:focus {
+    outline: none;
+    border: 2px solid $active;
+  }
+}
+
+label {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  margin-top: 16px;
+
+  &:focus-within {
+    color: $active;
+  }
+}
+
+button {
+  display: block;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 8px;
+  height: 40px;
+  width: 280px;
+  max-width: 100%;
+  background: $accent;
+  color: white;
+  font-weight: 600;
+  border: 2px solid $accent;
+  transition: all 200ms ease-in-out;
+  margin: 16px 0;
+
+  &:hover, &:focus {
+    background: white;
+    color: $accent;
+    border: 2px solid $accent;
+    outline: none;
+  }
+}
+
+#subscribeForm {
+  display: none;
+}
+
+#liveSection {
+  display: none;
+}
+
+.no-news {
+  margin-bottom: 16px;
+}
+
+.favorite-symbol {
+  color: $accent;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: $active;
+  text-decoration-thickness: 3px;
+}

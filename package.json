@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass:compile": "node-sass --include-path sass ./src/styles/main-screen.scss ./src/static/styles/style.css --output-style compressed",
+    "sass": "nodemon -e scss -x \"npm run sass:compile\""
   },
   "repository": {
     "type": "git",
@@ -28,9 +29,9 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-minify": "^1.0.0",
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.1",
+    "node-sass": "^5.0.0",
     "web-push": "^3.4.4"
   },
   "devDependencies": {
